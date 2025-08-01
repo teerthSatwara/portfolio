@@ -27,28 +27,35 @@ export default function ProjectCards() {
           }}
         >
           <CardContent>
-            <Typography variant="h5" component="div" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               {project.title}
             </Typography>
+
             <Typography variant="body2" color="text.secondary" gutterBottom>
               {project.description}
             </Typography>
+
             <Box sx={{ mt: 1.5, mb: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
               {project.tech.map((techItem, i) => (
                 <Chip key={i} label={techItem} size="small" variant="outlined" />
               ))}
             </Box>
-            <Button
-              variant="contained"
-              color="primary"
-              endIcon={<LaunchIcon />}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="small"
-            >
-              View Project
-            </Button>
+
+            {/* Only render if there's a link, and use component="a" to allow href/target/rel */}
+            {project.link && (
+              <Button
+                component="a"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                color="primary"
+                endIcon={<LaunchIcon />}
+                size="small"
+              >
+                View Project
+              </Button>
+            )}
           </CardContent>
         </Card>
       ))}
