@@ -1,16 +1,17 @@
-// app/projects/[id]/page.tsx
+'use client';
+import React, { use } from 'react';
 import Link from 'next/link';
 import { useProjects } from '@/hooks/useProjects';
 
 interface PageProps {
-  params: { id: string };
-  // If you don’t use searchParams, you can leave it off entirely.
+  params: Promise<{ id: string }>;
 }
 
 export default function ProjectDetail({ params }: PageProps) {
-  const { id } = params;
+  // use() lets you unwrap a promise inside a client component
+  const { id } = use(params);
   const projects = useProjects();
-  const project = projects.find(p => p.id.toString() === id);
+  const project = projects.find((p) => p.id.toString() === id);
 
   if (!project) {
     return (
@@ -24,7 +25,6 @@ export default function ProjectDetail({ params }: PageProps) {
       </div>
     );
   }
-
   return (
     <section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16 px-4">
       <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-8">
