@@ -2,15 +2,16 @@
 import Link from 'next/link';
 import { useProjects } from '@/hooks/useProjects';
 
-export default function ProjectDetail({
-  params,
-  searchParams,   // ← add this
-}: {
+interface PageProps {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+  // If you don’t use searchParams, you can leave it off entirely.
+}
+
+export default function ProjectDetail({ params }: PageProps) {
+  const { id } = params;
   const projects = useProjects();
-  const project = projects.find(p => p.id.toString() === params.id);
+  const project = projects.find(p => p.id.toString() === id);
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
