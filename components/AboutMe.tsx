@@ -1,4 +1,6 @@
+// components/AboutMe.tsx
 import React from 'react';
+import Link from 'next/link';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function AboutMe() {
@@ -6,7 +8,7 @@ export default function AboutMe() {
     <section className="py-16 px-6 bg-gray-50 dark:bg-gray-900 transition-all duration-300">
       <div className="max-w-5xl mx-auto text-center md:text-left md:flex md:items-center md:gap-12">
         
-        {/* ✅ LEFT: Intro Text */}
+        {/* LEFT: Intro Text */}
         <div className="flex-1">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
             About Me
@@ -19,7 +21,6 @@ export default function AboutMe() {
             <strong> full-stack dashboards</strong> to <strong>consulting for research labs</strong> 
             and <strong>international organizations</strong>.  
           </p>
-
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             My passion lies in creating <em>human-centered software solutions</em> that are 
             data-driven and impactful. Whether it’s <strong>designing dashboards, building APIs, 
@@ -27,7 +28,7 @@ export default function AboutMe() {
             problems.
           </p>
 
-          {/* ✅ Social Links */}
+          {/* Social Links */}
           <div className="flex justify-center md:justify-start gap-4">
             <a
               href="https://www.linkedin.com/in/teerthsatwara/"
@@ -48,14 +49,14 @@ export default function AboutMe() {
           </div>
         </div>
 
-        {/* ✅ RIGHT: Optional Photo or Graphic */}
+        {/* RIGHT: Explore My Work Button */}
         <div className="flex-1 mt-10 md:mt-0 flex justify-center">
-        <a
-          href="/projects"
-          className="px-6 py-3 bg-gray-800 text-gray-100 dark:bg-gray-200 dark:text-gray-900 rounded transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-gray-700 dark:hover:bg-gray-300"
-        >
-          Explore My Work
-        </a>
+          <Link
+            href="/projects"
+            className="px-6 py-3 bg-gray-800 text-gray-100 dark:bg-gray-200 dark:text-gray-900 rounded transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-gray-700 dark:hover:bg-gray-300"
+          >
+            Explore My Work
+          </Link>
         </div>
       </div>
     </section>
